@@ -1,0 +1,15 @@
+cat /etc/systemd/system/tac_plus-ng.service
+[Unit]
+Description=tac_plus-ng RADIUS Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/tac_plus-ng -f /etc/tac_plus-ng/radius.cfg
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
